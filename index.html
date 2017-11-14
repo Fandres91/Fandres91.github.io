@@ -6,13 +6,24 @@
 -->
 <html>
 	<head>
-		<title>Fabián Durán</title>
+		<TITLE>personal</TITLE>
+<meta http-equiv="Content-Type" content="text/html; ISO-8859-1">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="Spanish">
+<META NAME="AUTHOR" CONTENT="fabian andres duran santos">
+<META NAME="REPLY-TO" CONTENT="fago_11@hotmail.com">
+<LINK REV="made" href="mailto:fago_11@hotmail.com">
+<META NAME="DESCRIPTION" CONTENT="Marca personal, hoja de vida profesional con los portafolios">
+<META NAME="KEYWORDS" CONTENT="portafolio,fabian,duran,santos,sistemas">
+<META NAME="Resource-type" CONTENT="Index">
+<META NAME="DateCreated" CONTENT="Tue, 14 November 2017 00:00:00 GMT+1">
+<META NAME="robots" content="INDEX">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
 
@@ -185,17 +196,23 @@
 							donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
 							orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
 
-							<form method="post" action="#">
+							<form method="post">
 								<div class="row">
-									<div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name" /></div>
-									<div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="6u 12u$(mobile)">
+										<input  type="text" id="nombre" name="nombre" placeholder="Name" /></div>
+									<div class="6u$ 12u$(mobile)">
+										<input type="text" id="email" name="email" placeholder="Email" /></div>
 									<div class="12u$">
-										<textarea name="message" placeholder="Message"></textarea>
+										<textarea  name="comentario" id="comentario" placeholder="Message"></textarea>
 									</div>
 									<div class="12u$">
-										<input type="submit" value="Send Message" id="enviar"/>
+										
+									<input type="button" onclick="Guardar()" name="" value="Enviar datos">
 
 									</div>
+								</div>
+								<div id="mensaje" style=" background: rgba(63, 255, 0, 0.62); border-radius: 3em " >
+  														
 								</div>
 							</form>
 
@@ -213,8 +230,7 @@
 					</ul>
 
 			</div>
-
-		<!-- Scripts -->
+<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollzer.min.js"></script>
@@ -222,11 +238,11 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+	
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	 $('.enviar').click(function(){
-	
+	 function Guardar(){
+
 		var nombre = document.getElementById('nombre').value;
 		var email = document.getElementById('email').value;
 		var comentario = document.getElementById('comentario').value;
@@ -237,19 +253,25 @@
 			data:('nombre='+nombre+'&email='+email+'&comentario='+comentario),
 			success:function(respuesta){
 				if (respuesta == 1) { 
+					
 					$('#mensaje').html('Mensaje enviado');
 					document.getElementById('nombre').value="";
-					document.getElementById('pregunta').value="";
-					window.onReady = ConsulBD();
-  }
+					document.getElementById('email').value="";
+					document.getElementById('comentario').value="";
+
+				setTimeout(function() 
+					 {
+        			$("#mensaje").fadeOut(1200);
+    				 },3000);
+  			}
 				else
 				{
-					$('#mensaje').html('no sirve esta mierda');
+					$('#mensaje').html('En mantenimiento');
 				}
 			}
 		});
-});
-	});
+ }
+	
 </script>
 
 	</body>
