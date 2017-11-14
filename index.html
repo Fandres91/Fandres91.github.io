@@ -108,13 +108,13 @@
 									<article class="item">
 										<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
 										<header>
-											<h3>Ipsum Feugiat</h3>
+											<h3>Grupo de Investigación HYDRA</h3>
 										</header>
 									</article>
 									<article class="item">
 										<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
 										<header>
-											<h3>Rhoncus Semper</h3>
+											<h3>Nodo Santander 2016</h3>
 										</header>
 									</article>
 								</div>
@@ -122,13 +122,13 @@
 									<article class="item">
 										<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
 										<header>
-											<h3>Magna Nullam</h3>
+											<h3>Departamento de investigación</h3>
 										</header>
 									</article>
 									<article class="item">
 										<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
 										<header>
-											<h3>Natoque Vitae</h3>
+											<h3>Guia de Restaurantes San Gil</h3>
 										</header>
 									</article>
 								</div>
@@ -136,7 +136,8 @@
 									<article class="item">
 										<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
 										<header>
-											<h3>Dolor Penatibus</h3>
+											<h3>Guia de Proyectos</h3>
+											<a href='mailto:algunadirección@killersites.com'>Mándameunmail!</a>
 										</header>
 									</article>
 									<article class="item">
@@ -192,7 +193,8 @@
 										<textarea name="message" placeholder="Message"></textarea>
 									</div>
 									<div class="12u$">
-										<input type="submit" value="Send Message" />
+										<input type="submit" value="Send Message" id="enviar"/>
+
 									</div>
 								</div>
 							</form>
@@ -220,6 +222,35 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	 $('.enviar').click(function(){
+	
+		var nombre = document.getElementById('nombre').value;
+		var email = document.getElementById('email').value;
+		var comentario = document.getElementById('comentario').value;
+
+		$.ajax({
+			type:'POST',
+			url:'servidor.php',
+			data:('nombre='+nombre+'&email='+email+'&comentario='+comentario),
+			success:function(respuesta){
+				if (respuesta == 1) { 
+					$('#mensaje').html('Mensaje enviado');
+					document.getElementById('nombre').value="";
+					document.getElementById('pregunta').value="";
+					window.onReady = ConsulBD();
+  }
+				else
+				{
+					$('#mensaje').html('no sirve esta mierda');
+				}
+			}
+		});
+});
+	});
+</script>
 
 	</body>
 </html>
