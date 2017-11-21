@@ -1,7 +1,7 @@
 <?php
 $servidor="mysql.webcindario.com";
-$usuario="editor";
-$password="fdragon1991";
+$user="editor";
+$pass="fdragon1991";
 $bd="editor";
 
 $conexion= mysqli_connect($servidor, $user, $pass, $bd);
