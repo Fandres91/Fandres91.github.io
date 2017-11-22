@@ -74,16 +74,167 @@ body {
     position: absolute;
     margin-left: 8%;
 }
-span.blue {
-    height: 30%;
-    width: 30%;
-    display: table-cell;
-    text-align: center;
-    font-size: 36px;
-    vertical-align: middle;
-    border-radius: 50%;
-    background: #5178D0;
+body {
+    font-family: Arial, serif;
 }
+.clear {
+    width: 100%;
+    clear: both;
+}
+/*Estilos Base*/
+
+.contenedor-img {
+    width: 300px;
+    height: 280px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+    background: #fff;
+}
+.contenedor-img .mascara, .contenedor-img .contenido {
+    width: 300px;
+    height: 280px;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+.contenedor-img img {
+    display: block;
+    position: relative;
+}
+.contenedor-img h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.9);
+    margin: 20px 0 0 0;
+    letter-spacing: 1px;
+}
+.contenedor-img p {
+    font-size: 13px;
+    line-height: 1.25em;
+    letter-spacing: 2px;
+    font-weight: bold;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 10px;
+    text-align: center;
+}
+.contenedor-img a.link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #222;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+}
+.contenedor-img a.link:hover {
+    box-shadow: 0 0 5px #000
+}
+/*información de la imagen*/
+
+.estiloHover img {
+    transition: all 0.2s linear;
+}
+.estiloHover .mascara {
+    opacity: 0;
+    background-color: rgba(46, 157, 120, 0.93);
+    transition: all 0.3s ease-in-out;
+}
+.estiloHover h2 {
+    transform: translateX(-200px);
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
+}
+.estiloHover p {
+    transform: translateX(200px);
+    opacity: 0;
+    transition: all 0.4s linear;
+}
+.estiloHover a.link {
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    transform: translateY(100px)
+}
+.estiloHover:hover img {
+    transform: scale(1.1);
+}
+.estiloHover:hover .mascara {
+    opacity: 1;
+}
+.estiloHover:hover h2, .estiloHover:hover p, .estiloHover:hover a.link {
+    opacity: 1;
+    transform: translateX(0px);
+}
+.estiloHover:hover p {
+    transition-delay: 0.1s;
+}
+.estiloHover:hover a.link {
+    transition-delay: 0.2s;
+    transform: translateY(0px);
+}
+
+
+
+#mensaje {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#mensaje.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+
+
+
+
+
+
+
+
+
+
 .container {
     margin-left: auto;
     margin-right: auto;
@@ -1246,8 +1397,8 @@ footer {
     margin: 2em 0 0 0;
 }
 strong, b {
-    font-weight: 300;
-    color: #666;
+    font-weight: 600;
+    color: #000;
 }
 em, i {
     font-style: italic;
